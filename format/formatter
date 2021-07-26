@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+file=$1
+build_path=$2
+if [[ -z $build_path ]]; then
+	build_path=`dirname $ofile`
+fi
+ofile=$(mktemp --tmpdir=/tmp --suffix .cpp)
+touch $ofile
+
+clang-tidy -checks='-*,readability-braces-around-statements' -fix-errors -p $build_path $file >/dev/null 2>/dev/null
+
+g++ -fpreprocessed -dD -E $file 2>/dev/null |
+	sed 's/^\s*#\s*\(line\|[0-9]\).*//g' |
+	( cd `dirname ${BASH_SOURCE[0]}` && clang-format -style=file ) > $ofile
+
+mv $ofile $file

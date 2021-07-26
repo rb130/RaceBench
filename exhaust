@@ -1,0 +1,12 @@
+#!/bin/bash
+
+i=0
+while true; do
+    echo "test $i"
+    "${@:1}" >/dev/null
+    if [[ $? -ne 0 ]]; then
+        echo "triggered"
+		break
+	fi
+    i=$((i+1))
+done

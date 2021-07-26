@@ -1,0 +1,18 @@
+#!/bin/bash
+
+arg=$1
+
+case $arg in
+    config)
+        ./configure || exit 1
+    ;;
+    build)
+        make || exit 1
+    ;;
+    clean)
+        make clean || exit 1
+    ;;
+    binary)
+        echo "sample"
+    ;;
+esac

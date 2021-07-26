@@ -1,0 +1,21 @@
+[submodule "evaluation/fuzzers/AFL/AFL"]
+	path = evaluation/fuzzers/AFL/AFL
+	url = https://github.com/google/AFL
+[submodule "evaluation/fuzzers/AFL-maple/AFL-maple"]
+	path = evaluation/fuzzers/AFL-maple/AFL-maple
+	url = https://github.com/Escapingbug/afl-maple.git
+[submodule "evaluation/fuzzers/fairfuzz/fairfuzz"]
+	path = evaluation/fuzzers/fairfuzz/fairfuzz
+	url = https://github.com/carolemieux/afl-rb.git
+[submodule "evaluation/fuzzers/MOpt-AFL/MOpt"]
+	path = evaluation/fuzzers/MOpt-AFL/MOpt-AFL
+	url = https://github.com/puppet-meteor/MOpt-AFL.git
+[submodule "evaluation/fuzzers/AFLplusplus/AFLplusplus"]
+	path = evaluation/fuzzers/AFLplusplus/AFLplusplus
+	url = https://github.com/AFLplusplus/AFLplusplus
+[submodule "evaluation/fuzzers/aflfast/aflfast"]
+	path = evaluation/fuzzers/aflfast/aflfast
+	url = https://github.com/mboehme/aflfast.git
+[submodule "evaluation/fuzzers/honggfuzz/honggfuzz"]
+	path = evaluation/fuzzers/honggfuzz/honggfuzz
+	url = https://github.com/google/honggfuzz
