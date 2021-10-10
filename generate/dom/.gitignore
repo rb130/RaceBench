@@ -1,0 +1,8 @@
+Makefile
+CMakeCache.txt
+compile_commands.json
+cmake_install.cmake
+CMakeFiles/
+
+config.h
+dom

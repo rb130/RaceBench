@@ -261,9 +261,8 @@ def main():
     copy_target()
 
     configure()
-
-    build_clean()
     target_build()
+    build_clean()
 
 
 if __name__ == "__main__":

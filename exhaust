@@ -6,7 +6,7 @@ while true; do
     "${@:1}" >/dev/null
     if [[ $? -ne 0 ]]; then
         echo "triggered"
-		break
-	fi
+        break
+    fi
     i=$((i+1))
 done

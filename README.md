@@ -1,10 +1,28 @@
 # RaceBench
 
-RaceBench injects triggerable concurrency bugs into existing concurrent programs, aiming to build a benchmark suitable for fuzzer evaluation.
+RaceBench injects triggerable concurrency bugs into existing concurrent programs.
 
-## Dataset
+## Build
 
-Target programs and injected bugs: [RaceBenchData](https://github.com/rb130/RaceBenchData).
+Build dominator analyzer.
+```shell
+cd dom
+cmake .
+make
+```
+
+The executable file should be located at `dom/dom`.
+
+## Build
+
+Build dominator analyzer.
+```shell
+cd dom
+cmake .
+make
+```
+
+The executable file should be located at `dom/dom`.
 
 ## How to add a new target
 
@@ -33,7 +51,7 @@ Write seed input in `input-seed` file.
 
 Write estimated fuzzing timeout (seconds) in `timeout` file.
 
-Run `main.py`.
+Run `generate/main.py`.
 
 ## Generate Makefile script
 
@@ -68,7 +86,5 @@ This will also automatically format the code.
 - clang-tidy
 - clang-format
 - bear 3.0.8
-
-## Fuzzer Evaluation
-
-See [evaluation](evaluation/README.md).
+- llvm/clang 13
+- cmake

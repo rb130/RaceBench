@@ -16,7 +16,17 @@ O_LINKER := {O_LINKER}
 O_LINK_ARGS := {O_LINK_ARGS}
 O_WORKDIR := {O_WORKDIR}
 
-RB_CFLAGS := $(CFLAGS) -pthread -std=c99
+REQUIRED_FLAGS := -pthread -I$(abspath .)
+
+LDFLAGS += $(REQUIRED_FLAGS)
+CFLAGS += $(REQUIRED_FLAGS)
+CXXFLAGS += $(REQUIRED_FLAGS)
+
+export LDFLAGS
+export CFLAGS
+export CXXFLAGS
+
+RB_CFLAGS := $(CFLAGS) -std=c99
 
 all: $(RB_OBJS)
 	cd src && ./rb-build config

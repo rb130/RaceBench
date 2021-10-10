@@ -19,3 +19,9 @@
 [submodule "evaluation/fuzzers/honggfuzz/honggfuzz"]
 	path = evaluation/fuzzers/honggfuzz/honggfuzz
 	url = https://github.com/google/honggfuzz
+[submodule "gdb_trace"]
+	path = gdb_trace
+	url = https://github.com/rb130/gdb_trace
+[submodule "gdb_reproduce"]
+	path = gdb_reproduce
+	url = https://github.com/rb130/gdb_reproduce

@@ -1,7 +1,0 @@
-AFL
-AFLplusplus
-MOpt-AFL
-aflfast
-fairfuzz
-honggfuzz
-AFL-maple
