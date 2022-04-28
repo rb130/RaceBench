@@ -2,6 +2,8 @@
 
 RaceBench injects triggerable concurrency bugs into existing concurrent programs.
 
+The dataset is available at [RaceBenchData](https://github.com/rb130/RaceBenchData).
+
 ## Build
 
 Build dominator analyzer.
