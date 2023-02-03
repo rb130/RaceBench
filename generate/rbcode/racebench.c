@@ -74,9 +74,9 @@ static void dump_stats(void)
         return;
     }
 
-    rb_stat.total_run += rb_stat_old.total_run;
+    __sync_fetch_and_add(&rb_stat.total_run, rb_stat_old.total_run);
     for (int i = 0; i < MAX_BUGNUM; ++i) {
-        rb_stat.trigger_num[i] += rb_stat_old.trigger_num[i];
+        __sync_fetch_and_add(&rb_stat.trigger_num[i], rb_stat_old.trigger_num[i]);
     }
 
     if (lseek(fd, 0, SEEK_SET) == -1) {

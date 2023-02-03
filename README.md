@@ -15,17 +15,6 @@ make
 
 The executable file should be located at `dom/dom`.
 
-## Build
-
-Build dominator analyzer.
-```shell
-cd dom
-cmake .
-make
-```
-
-The executable file should be located at `dom/dom`.
-
 ## How to add a new target
 
 Code of the target program should be formatted with `format/formatter`.
@@ -35,7 +24,7 @@ It should implement the following options.
 ```shell
 # compile
 make
-# install to racebench folder
+# install the executable file to racebench folder
 make install
 # clean up racebench and compile results
 make clean

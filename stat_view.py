@@ -6,9 +6,9 @@ import struct
 
 """
 typedef struct racebench_statis {
-    uint32_t total_run;
-    uint32_t trigger_num[MAX_BUGNUM];
-} __attribute__((aligned(4),packed)) racebench_statis;
+    uint64_t total_run;
+    uint64_t trigger_num[MAX_BUGNUM];
+} __attribute__((aligned(8),packed)) racebench_statis;
 """
 
 
@@ -30,10 +30,10 @@ def main():
     with open(filename, "rb") as f:
         data = f.read()
     
-    bug_num = len(data) // 4 - 1
-    assert len(data) == 4 * (bug_num + 1)
+    bug_num = len(data) // 8 - 1
+    assert len(data) == 8 * (bug_num + 1)
 
-    unpacked = list(struct.iter_unpack("<I", data))
+    unpacked = list(struct.iter_unpack("<Q", data))
     unpacked = [x[0] for x in unpacked]
     print(unpacked, bug_num)
     total_run = unpacked[0]
