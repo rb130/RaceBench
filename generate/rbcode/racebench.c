@@ -74,16 +74,15 @@ static void dump_stats(void)
         return;
     }
 
-    __sync_fetch_and_add(&rb_stat.total_run, rb_stat_old.total_run);
-    for (int i = 0; i < MAX_BUGNUM; ++i) {
-        __sync_fetch_and_add(&rb_stat.trigger_num[i], rb_stat_old.trigger_num[i]);
-    }
+    rb_stat_old.total_run += rb_stat.total_run;
+    for (int i = 0; i < MAX_BUGNUM; ++i)
+        rb_stat_old.trigger_num[i] += rb_stat.trigger_num[i];
 
     if (lseek(fd, 0, SEEK_SET) == -1) {
         perror("RaceBench lseek error");
         return;
     }
-    if (write(fd, &rb_stat, sizeof(racebench_statis)) == -1) {
+    if (write(fd, &rb_stat_old, sizeof(racebench_statis)) == -1) {
         perror("RaceBench write stat file error");
         return;
     }
