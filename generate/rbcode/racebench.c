@@ -67,6 +67,8 @@ static void dump_stats(void)
         return;
     }
 
+    uint64_t time_now = time(NULL);
+
     racebench_statis rb_stat_old;
     memset(&rb_stat_old, 0, sizeof(racebench_statis));
     if (read(fd, &rb_stat_old, sizeof(racebench_statis)) == -1) {
@@ -75,8 +77,11 @@ static void dump_stats(void)
     }
 
     rb_stat_old.total_run += rb_stat.total_run;
-    for (int i = 0; i < MAX_BUGNUM; ++i)
+    for (int i = 0; i < MAX_BUGNUM; ++i) {
         rb_stat_old.trigger_num[i] += rb_stat.trigger_num[i];
+        if (rb_stat.trigger_num[i] > 0 && rb_stat_old.trigger_time[i] == 0)
+            rb_stat_old.trigger_time[i] = time_now;
+    }
 
     if (lseek(fd, 0, SEEK_SET) == -1) {
         perror("RaceBench lseek error");

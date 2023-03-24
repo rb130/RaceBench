@@ -2,12 +2,14 @@
 
 import sys
 import struct
+import datetime
 
 
 """
 typedef struct racebench_statis {
     uint64_t total_run;
     uint64_t trigger_num[MAX_BUGNUM];
+    uint64_t trigger_time[MAX_BUGNUM];
 } __attribute__((aligned(8),packed)) racebench_statis;
 """
 
@@ -30,8 +32,8 @@ def main():
     with open(filename, "rb") as f:
         data = f.read()
     
-    bug_num = len(data) // 8 - 1
-    assert len(data) == 8 * (bug_num + 1)
+    bug_num = (len(data) // 8 - 1) // 2
+    assert len(data) == 8 * (bug_num * 2 + 1)
 
     unpacked = list(struct.iter_unpack("<Q", data))
     unpacked = [x[0] for x in unpacked]
@@ -39,9 +41,17 @@ def main():
     total_run = unpacked[0]
     unpacked = unpacked[1:]
     trigger_num = unpacked[0:bug_num]
+    trigger_time = []
+    for t in unpacked[bug_num:bug_num*2]:
+        if t == 0:
+            t = None
+        else:
+            t = datetime.datetime.fromtimestamp(t).strftime("%c")
+        trigger_time.append(t)
 
     print("total_run: %d" % total_run)
     show("trigger_num", trigger_num)
+    print("trigger_time", trigger_time)
     print("find bugs:", [i for i in range(bug_num) if trigger_num[i]>0])
 
 

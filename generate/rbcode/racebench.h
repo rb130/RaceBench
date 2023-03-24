@@ -17,6 +17,7 @@ extern uint8_t rb_triggered;
 typedef struct racebench_statis {
     uint64_t total_run;
     uint64_t trigger_num[MAX_BUGNUM];
+    uint64_t trigger_time[MAX_BUGNUM];
 } __attribute__((aligned(8),packed)) racebench_statis;
 
 extern racebench_statis rb_stat;
